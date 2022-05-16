@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:interphlix/theme.dart';
+import 'package:interphlix/ui/navbar/bottomnavbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class Interphlix extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         appBar: AppBar(),
+		bottomNavigationBar: const BottomNavBar(),
       ),
     );
   }
