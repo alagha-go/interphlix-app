@@ -7,6 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   await initializeTheme();
+  runApp(const Interphlix());
 }
 
 class Interphlix extends StatelessWidget {
