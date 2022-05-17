@@ -11,8 +11,8 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx((() => CurvedNavigationBar(
-          color: myTheme.secondaryColor.value,
-          backgroundColor: myTheme.primaryColor.value,
+          color: myTheme.primaryColor.value,
+          backgroundColor: myTheme.secondaryColor.value,
           items: BottomNavBarButtons,
           onTap: (index) {
             pageIndex = index.obs;
@@ -23,14 +23,14 @@ class BottomNavBar extends StatelessWidget {
 
 Widget BottomnavBarButton(icon, index) {
   return Padding(
-    padding: EdgeInsets.all(5),
+    padding: const EdgeInsets.all(0),
     child: Card(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
         elevation: 5,
         key: UniqueKey(),
-        color: myTheme.primaryColor.value,
+        color: myTheme.secondaryColor.value,
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
           radius: 20,
@@ -38,7 +38,7 @@ Widget BottomnavBarButton(icon, index) {
             icon,
             key: UniqueKey(),
             size: 30,
-            color: myTheme.secondaryColor.value,
+            color: myTheme.primaryColor.value,
           ),
         ),
     ),

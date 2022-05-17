@@ -18,9 +18,15 @@ class Interphlix extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(
+        useMaterial3: true,
+        backgroundColor: myTheme.primaryColor.value
+        ),
       home: Scaffold(
         appBar: AppBar(),
+        body: Container(
+          color: myTheme.primaryColor.value,
+        ),
 		bottomNavigationBar: const BottomNavBar(),
       ),
     );
