@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:interphlix/theme.dart';
+import 'package:interphlix/ui/navbar/appbar.dart';
 import 'package:interphlix/ui/navbar/bottomnavbar.dart';
 
 void main() async {
@@ -23,7 +24,7 @@ class Interphlix extends StatelessWidget {
         backgroundColor: myTheme.primaryColor.value
         ),
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: MyAppBar(back: false),
         body: Container(
           color: myTheme.primaryColor.value,
         ),
