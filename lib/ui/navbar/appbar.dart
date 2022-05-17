@@ -22,6 +22,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: (){},
         icon: Icon(Icons.arrow_back_ios, color: myTheme.secondaryColor.value,),
         ),
+        actions: [
+          IconButton(
+            onPressed: (){},
+            icon: myTheme.isDarkMode.value
+            ?Icon(Icons.wb_sunny_rounded, color: myTheme.secondaryColor.value)
+            :Icon(Icons.brightness_2_sharp, color: myTheme.secondaryColor.value)
+            ),
+        ],
     );
   }
 }
