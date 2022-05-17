@@ -33,6 +33,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: [
           IconButton(
               onPressed: toggleTheme,
+              splashColor: myTheme.value.primaryColor,
               icon: myTheme.value.isDarkMode
                   ? Icon(Icons.wb_sunny_rounded,
                       color: myTheme.value.secondaryColor)
