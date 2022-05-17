@@ -12,7 +12,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: myTheme.primaryColor.value,
-      leading: back? 
+      leading: !back? 
       Padding(
         padding: EdgeInsets.all(8.0),
         child: myTheme.isDarkMode.value
