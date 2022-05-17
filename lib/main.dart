@@ -11,10 +11,10 @@ late final myTheme;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init("Interphlix");
   themeController = Get.put(ThemeController());
   myTheme = themeController.theme;
-  initializeTheme();
-  await GetStorage.init();
+  await initializeTheme();
   runApp(const Interphlix());
 }
 

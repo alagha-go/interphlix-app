@@ -14,8 +14,8 @@ initializeTheme() {
   var dark = DB.read("darkmode");
   print(dark);
   if (dark == null) {
-    DB.write("darkmode", true);
-    dark = true;
+    DB.write("darkmode", false);
+    dark = false;
   }
   myTheme.value.isDarkMode = dark;
   updateTheme();
