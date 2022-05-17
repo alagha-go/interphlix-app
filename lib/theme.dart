@@ -18,6 +18,15 @@ class Theme {
     required this.secondaryColor,
     required this.actionColor,
   });
+
+  toggleTheme() {
+    if (this.isDarkMode.value == false) {
+      this.isDarkMode = true.obs;
+    } else {
+      this.isDarkMode = false.obs;
+    }
+    DB.write("darkmode", this.isDarkMode.value);
+  }
 }
 
 GetTheme(bool isDark) {
