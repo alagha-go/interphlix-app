@@ -12,7 +12,6 @@ class ThemeController extends GetxController {
 
 initializeTheme() {
   var dark = DB.read("darkmode");
-  print(dark);
   if (dark == null) {
     DB.write("darkmode", true);
     dark = true;
@@ -30,8 +29,6 @@ updateTheme() {
 
 toggleTheme() async {
   myTheme.value.isDarkMode = await !myTheme.value.isDarkMode;
-  print(myTheme.value.isDarkMode);
   await updateTheme();
   DB.write("darkmode", myTheme.value.isDarkMode);
-  print(DB.read("darkmode"));
 }
