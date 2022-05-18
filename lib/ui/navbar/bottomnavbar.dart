@@ -15,7 +15,11 @@ class BottomNavBar extends StatelessWidget {
           backgroundColor: myTheme.value.secondaryColor,
           items: BottomNavBarButtons,
           onTap: (index) {
-            pageIndex = index.obs;
+            if (index > Pages.length) {
+              pageIndex = 0.obs;
+            } else {
+              pageIndex = index.obs;
+            }
           },
         )));
   }
