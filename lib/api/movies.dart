@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:interphlix/api/movieclass.dart';
+import 'package:interphlix/objects/movieclass.dart';
 
 List<Movie> homeMovies = [];
 
