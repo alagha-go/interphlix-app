@@ -19,7 +19,6 @@ class BottomNavBar extends StatelessWidget {
               pageIndex.update((model) {
                 model!.index = 0;
               });
-              print(pageIndex.value.index);
             } else {
               pageIndex.update((model) {
                 model!.index = index;
