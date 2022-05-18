@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:interphlix/objects/movieclass.dart';
+import 'package:interphlix/objects/movie.dart';
 import 'package:interphlix/api/movies.dart';
 
 import '../../main.dart';
