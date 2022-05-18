@@ -4,7 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:interphlix/main.dart';
 import 'package:interphlix/theme.dart' as themes;
 
-final DB = GetStorage("Interphlix");
+final DB = GetStorage("Theme");
 
 class ThemeController extends GetxController {
   final theme = themes.Theme().obs;

@@ -11,7 +11,7 @@ late final myTheme;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init("Interphlix");
+  await GetStorage.init("Theme");
   themeController = Get.put(ThemeController());
   myTheme = themeController.theme;
   await initializeTheme();
