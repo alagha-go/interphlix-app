@@ -16,7 +16,6 @@ Future<List<Movie>>? getHomeMovies() async {
     homeMovies = List<Movie>.from(data.map((model) => Movie.fromJson(model)));
     return homeMovies;
   } catch (err) {
-    print(err);
   }
   return homeMovies;
 }
