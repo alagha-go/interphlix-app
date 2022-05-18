@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:interphlix/ui/pages/categoriespage.dart';
 import 'package:interphlix/ui/pages/homepage.dart';
 
-List<Widget> Pages = [HomePage()];
+List<Widget> Pages = [HomePage(), CategoriesPage()];
 
-Rx<int> pageIndex = 0.obs;
 
+class PageIndex {
+  int index;
+  PageIndex({this.index = 0});
+}
