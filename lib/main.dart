@@ -8,6 +8,7 @@ import 'package:interphlix/ui/pages/main.dart';
 
 late final themeController;
 late final myTheme;
+Rx<PageIndex> pageIndex = PageIndex().obs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,10 +27,12 @@ class Interphlix extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: Scaffold(
-        appBar: MyAppBar(back: false),
-        body: Pages[pageIndex.value],
-        bottomNavigationBar: const BottomNavBar(),
+      home: Obx(
+        () => Scaffold(
+          appBar: MyAppBar(back: false),
+          body: Pages[pageIndex.value.index],
+          bottomNavigationBar: const BottomNavBar(),
+        ),
       ),
     );
   }
