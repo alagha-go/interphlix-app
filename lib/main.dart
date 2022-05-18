@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:interphlix/api/movies.dart';
 import 'package:interphlix/controller/main.dart';
-import 'package:interphlix/theme.dart';
 import 'package:interphlix/ui/navbar/appbar.dart';
 import 'package:interphlix/ui/navbar/bottomnavbar.dart';
 import 'package:interphlix/ui/pages/main.dart';
