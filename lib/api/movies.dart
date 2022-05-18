@@ -8,6 +8,9 @@ List<Movie> homeMovies = [];
 var index = 0;
 
 Future<List<Movie>>? getHomeMovies() async {
+  if (homeMovies.length > 0) {
+    return homeMovies;
+  }
   final response = await http.get(
     Uri.parse("https://s1.interphlix.com/"),
   );
@@ -15,7 +18,6 @@ Future<List<Movie>>? getHomeMovies() async {
     var data = json.decode(response.body);
     homeMovies = List<Movie>.from(data.map((model) => Movie.fromJson(model)));
     return homeMovies;
-  } catch (err) {
-  }
+  } catch (err) {}
   return homeMovies;
 }
