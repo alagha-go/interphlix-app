@@ -7,6 +7,8 @@ import 'package:interphlix/ui/navbar/bottomnavbar.dart';
 import 'package:interphlix/ui/pages/main.dart';
 
 late final themeController;
+String apisdomain = "https://apis.interphlix.com";
+String socketdomain = "wss://apis.interphlix.com";
 late final myTheme;
 Rx<PageIndex> pageIndex = PageIndex().obs;
 
