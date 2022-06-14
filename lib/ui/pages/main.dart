@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:interphlix/ui/pages/categoriespage.dart';
 import 'package:interphlix/ui/pages/homepage.dart';
 
-List<Widget> Pages = [HomePage(), CategoriesPage()];
+import 'loginpage.dart';
 
+List<Widget> Pages = [LoginPage(), HomePage(), CategoriesPage()];
 
 class PageIndex {
   int index;
-  PageIndex({this.index = 0});
+  bool logedin;
+  PageIndex({this.index = 0, this.logedin = false});
 }

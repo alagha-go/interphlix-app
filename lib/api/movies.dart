@@ -1,7 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:interphlix/controller/main.dart';
+import 'package:interphlix/main.dart';
 import 'package:interphlix/objects/movie.dart';
+
+var headers = {"Cookie": "token=${token()}"};
 
 List<Movie> homeMovies = [];
 
@@ -12,7 +16,8 @@ Future<List<Movie>>? getHomeMovies() async {
     return homeMovies;
   }
   final response = await http.get(
-    Uri.parse("https://s1.interphlix.com/"),
+    Uri.parse("${apisdomain}/"),
+    headers: headers,
   );
   try {
     var data = json.decode(response.body);
@@ -20,4 +25,8 @@ Future<List<Movie>>? getHomeMovies() async {
     return homeMovies;
   } catch (err) {}
   return homeMovies;
+}
+
+String token() {
+  return DB.read("token");
 }

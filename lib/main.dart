@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:interphlix/controller/main.dart';
+import 'package:interphlix/socket/login.dart';
+import 'package:interphlix/socket/main.dart';
 import 'package:interphlix/ui/navbar/appbar.dart';
 import 'package:interphlix/ui/navbar/bottomnavbar.dart';
+import 'package:interphlix/ui/pages/loginpage.dart';
 import 'package:interphlix/ui/pages/main.dart';
 
 late final themeController;
@@ -18,6 +21,8 @@ void main() async {
   themeController = Get.put(ThemeController());
   myTheme = themeController.theme;
   await initializeTheme();
+  await ConnectSocket();
+  await Future.delayed(Duration(milliseconds: 1000));
   runApp(const Interphlix());
 }
 
@@ -31,9 +36,13 @@ class Interphlix extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       home: Obx(
         () => Scaffold(
-          appBar: MyAppBar(back: false),
+          appBar: (pageIndex.value.logedin)
+              ? MyAppBar(back: false)
+              : AppBar(
+                  backgroundColor: Colors.black,
+                ),
           body: Pages[pageIndex.value.index],
-          bottomNavigationBar: const BottomNavBar(),
+          bottomNavigationBar: (pageIndex.value.logedin) ? BottomNavBar() : null,
         ),
       ),
     );

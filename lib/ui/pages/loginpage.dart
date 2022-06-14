@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
+import 'package:interphlix/socket/login.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../main.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: myTheme.value.primaryColor,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SignInButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)
+                ),
+                onPressed: getLoginUrl,
+                Buttons.Google,
+                text: "Sign Up",
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              SignInButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                onPressed: getLoginUrl,
+                Buttons.Google,
+                text: "Log in",
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,7 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:interphlix/api/movies.dart';
 import 'package:interphlix/objects/category.dart';
+
+import '../main.dart';
 
 List<Category> categories = [];
 
@@ -10,7 +13,8 @@ Future<List<Category>> getCategories() async {
     return categories;
   }
   final response = await http.get(
-    Uri.parse("https://s1.interphlix.com/types"),
+    Uri.parse("/${apisdomain}/types"),
+    headers: headers
   );
   try {
     var data = json.decode(response.body);
