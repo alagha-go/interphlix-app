@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import'dart:io' show Platform;
 import 'package:get/get.dart';
+import 'package:get/get_utils/src/platform/platform_io.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:interphlix/controller/main.dart';
-import 'package:interphlix/socket/login.dart';
 import 'package:interphlix/socket/main.dart';
 import 'package:interphlix/ui/navbar/appbar.dart';
 import 'package:interphlix/ui/navbar/bottomnavbar.dart';
-import 'package:interphlix/ui/pages/loginpage.dart';
+import 'package:interphlix/ui/navbar/sidebar.dart';
 import 'package:interphlix/ui/pages/main.dart';
 
-late final themeController;
+late final getxController;
 String apisdomain = "https://apis.interphlix.com";
 String socketdomain = "wss://apis.interphlix.com";
 late final myTheme;
+late final dataHolder;
 Rx<PageIndex> pageIndex = PageIndex().obs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init("Theme");
-  themeController = Get.put(ThemeController());
-  myTheme = themeController.theme;
+  getxController = Get.put(ThemeController());
+  myTheme = getxController.theme;
+  dataHolder = getxController.data;
   await initializeTheme();
   await ConnectSocket();
   await Future.delayed(Duration(milliseconds: 1000));
@@ -36,13 +39,10 @@ class Interphlix extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       home: Obx(
         () => Scaffold(
-          appBar: (pageIndex.value.logedin)
-              ? MyAppBar(back: false)
-              : AppBar(
-                  backgroundColor: Colors.black,
-                ),
-          body: Pages[pageIndex.value.index],
-          bottomNavigationBar: (pageIndex.value.logedin) ? BottomNavBar() : null,
+          appBar: (!GeneralPlatform.isDesktop)?MyAppBar(back: false):null,
+          body: (!GeneralPlatform.isDesktop)?Pages[pageIndex.value.index]:SideBar(),
+          bottomNavigationBar:
+              (GeneralPlatform.isDesktop) ? null :(pageIndex.value.logedin)? BottomNavBar():null,
         ),
       ),
     );

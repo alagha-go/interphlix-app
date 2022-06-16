@@ -13,16 +13,16 @@ class CategoriesPage extends StatelessWidget {
       () => Container(
         color: myTheme.value.primaryColor,
         height: double.infinity,
-        child: FutureBuilder<List<Category>>(
+        child: FutureBuilder<dynamic>(
           future: getCategories(),
           builder:
-              (BuildContext context, AsyncSnapshot<List<Category>> snapshot) {
+              (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasData) {
               return Container(
                 color: myTheme.value.primaryColor,
                 width: double.infinity,
                 child: ListView(
-                  children: List.generate(snapshot.data!.length, (index) {
+                  children: List.generate(dataHolder.value.categories!.length, (index) {
                     return Container(
                       color: myTheme.value.primaryColor,
                       child: Card(
@@ -38,7 +38,7 @@ class CategoriesPage extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
-                                "${snapshot.data![index].type}",
+                                "${dataHolder.value.categories![index].type}",
                                 style: TextStyle(
                                   color: myTheme.value.primaryColor,
                                   fontSize: 30,

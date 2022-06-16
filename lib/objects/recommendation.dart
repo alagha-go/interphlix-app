@@ -5,10 +5,10 @@ import 'package:interphlix/objects/movie.dart';
 class Recommendation {
   Recommendation({
     this.seed,
-    this.categories,
+    this.departments,
   });
   double? seed;
-  List<Category>? categories;
+  List<Department>? departments;
 
 
   factory Recommendation.fromRawJson(String str) =>
@@ -18,22 +18,22 @@ class Recommendation {
 
   factory Recommendation.fromJson(Map<String, dynamic> json) => Recommendation(
         seed: json["seed"] == null ? null : json["seed"].toDouble(),
-        categories: json["categories"] == null
+        departments: json["categories"] == null
             ? null
-            : List<Category>.from(
-                json["categories"].map((x) => Category.fromJson(x))),
+            : List<Department>.from(
+                json["categories"].map((x) => Department.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "seed": seed == null ? null : seed,
-        "categories": categories == null
+        "categories": departments == null
             ? null
-            : List<dynamic>.from(categories!.map((x) => x.toJson())),
+            : List<dynamic>.from(departments!.map((x) => x.toJson())),
       };
 }
 
-class Category {
-  Category({
+class Department {
+  Department({
     this.title,
     this.movies,
   });
@@ -41,22 +41,22 @@ class Category {
   String? title;
   List<Movie>? movies;
 
-  factory Category.fromRawJson(String str) =>
-      Category.fromJson(json.decode(str));
+  factory Department.fromRawJson(String str) =>
+      Department.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
+  factory Department.fromJson(Map<String, dynamic> json) => Department(
         title: json["title"] == null ? null : json["title"],
         movies: json["movies"] == null
-            ? null
+            ? []
             : List<Movie>.from(json["movies"].map((x) => Movie.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "title": title == null ? null : title,
         "movies": movies == null
-            ? null
+            ? []
             : List<dynamic>.from(movies!.map((x) => x.toJson())),
       };
 }

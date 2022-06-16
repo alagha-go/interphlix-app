@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:interphlix/main.dart';
+import 'package:interphlix/objects/data.dart' as objects;
 import 'package:interphlix/theme.dart' as themes;
 
 final DB = GetStorage("Theme");
 
 class ThemeController extends GetxController {
   final theme = themes.Theme().obs;
+  final data = objects.Data().obs;
 }
 
 initializeTheme() {
