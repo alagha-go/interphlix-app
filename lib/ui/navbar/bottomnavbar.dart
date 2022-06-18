@@ -16,12 +16,12 @@ class BottomNavBar extends StatelessWidget {
           items: BottomNavBarButtons,
           onTap: (index) {
             if (index+1 >= Pages.length) {
-              pageIndex.update((model) {
-                model!.index = 1;
+              dataHolder.update((model) {
+                model!.pageIndex.index = 1;
               });
             } else {
-              pageIndex.update((model) {
-                model!.index = index+1;
+              dataHolder.update((model) {
+                model!.pageIndex.index = index+1;
               });
             }
           },

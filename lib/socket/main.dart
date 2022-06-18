@@ -1,8 +1,6 @@
-import 'package:get/route_manager.dart';
 import 'package:interphlix/controller/main.dart';
 import 'package:interphlix/main.dart';
 import 'package:interphlix/objects/cookie.dart';
-import 'package:interphlix/socket/login.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 String token = "";
@@ -38,11 +36,11 @@ onLogin(data) async {
 }
 
 loggedIn() {
-  pageIndex.update((val) async {
+  dataHolder.update((val) async {
     var login = await DB.read("logedin");
     if (login == true) {
-      val!.index = 1;
-      val.logedin = true;
+      val!.pageIndex.index = 1;
+      val.pageIndex.logedin = true;
     }
   });
 }

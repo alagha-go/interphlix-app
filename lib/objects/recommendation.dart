@@ -1,15 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:interphlix/objects/movie.dart';
 
 class Recommendation {
   Recommendation({
     this.seed,
     this.departments,
-  });
+  }) : scrollController = ScrollController();
   double? seed;
   List<Department>? departments;
-
+  ScrollController? scrollController;
 
   factory Recommendation.fromRawJson(String str) =>
       Recommendation.fromJson(json.decode(str));
@@ -33,13 +34,12 @@ class Recommendation {
 }
 
 class Department {
-  Department({
-    this.title,
-    this.movies,
-  });
-
   String? title;
+  String? path;
   List<Movie>? movies;
+  ScrollController? scrollController;
+
+  Department({this.title, this.path, this.movies}) : scrollController = ScrollController(debugLabel: title);
 
   factory Department.fromRawJson(String str) =>
       Department.fromJson(json.decode(str));
@@ -47,14 +47,16 @@ class Department {
   String toRawJson() => json.encode(toJson());
 
   factory Department.fromJson(Map<String, dynamic> json) => Department(
-        title: json["title"] == null ? null : json["title"],
+        title: json["title"] == null ? "" : json["title"],
+        path: json["path"] == null ? "" : json["path"],
         movies: json["movies"] == null
             ? []
             : List<Movie>.from(json["movies"].map((x) => Movie.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "title": title == null ? null : title,
+        "title": title == null ? "" : title,
+        "path": path == null ? "": path,
         "movies": movies == null
             ? []
             : List<dynamic>.from(movies!.map((x) => x.toJson())),
